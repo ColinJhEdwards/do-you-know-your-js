@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Schoolbell", cursive;
+}
+
+.main {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8rem;
+  background: url(./Images/chalk.jpg);
+  color: white;
+}
+
+.main h1 {
+  font-size: 5rem;
+}
+
+.main p {
+  font-size: 2rem;
+  width: 50%;
+  text-align: center;
+  padding-top: 5rem;
+}
+
+#beginBtn {
+  padding: 2rem 5rem;
+  margin-top: 5rem;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: "Schoolbell", cursive;
+  font-size: 2rem;
+  transition: ease all 0.5s;
+}
+
+#beginBtn:hover {
+  background: green;
+  color: white;
+}
+
+.highscore {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+}
+
+.highscore ul {
+  list-style-type: none;
+}
+
+.highscore li {
+  margin: 1rem;
+}
