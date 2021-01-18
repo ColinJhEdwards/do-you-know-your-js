@@ -17,7 +17,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 8rem;
+  padding-top: 5rem;
   background: url(./Images/chalk.jpg);
   color: white;
 }
@@ -34,14 +34,8 @@ html {
 }
 
 #beginBtn {
-  padding: 2rem 5rem;
-  margin-top: 5rem;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
   font-family: "Schoolbell", cursive;
-  font-size: 2rem;
-  transition: ease all 0.5s;
+  margin-top: 5rem;
 }
 
 #beginBtn:hover {
@@ -75,10 +69,16 @@ html {
 
 .quiz-section {
   min-height: 100vh;
-  background: rgb(43, 85, 43);
+  background: rgb(43, 51, 85);
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  visibility: hidden;
+  transition: all ease 0.5s;
+  font-family: "Roboto", sans-serif;
 }
 
 .question-block {
@@ -88,20 +88,56 @@ html {
   background: white;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
+  width: 80%;
 }
 
-.question-block button {
+.question-message {
+  margin-bottom: 4rem;
+}
+
+.question-options {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
   padding: 2rem 4rem;
   background: white;
   cursor: pointer;
   transition: all ease 0.5s;
-  font-family: "Schoolbell", cursive;
+  font-family: "Roboto", sans-serif;
   font-size: 2rem;
-  margin-left: 35rem;
   border-radius: 10px;
+  transition: ease all 0.5s;
 }
 
-.question-block button:hover {
-  background: green;
+.question-options button {
+  margin: 1rem;
+}
+
+#next-btn {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+#next-btn:hover,
+.question-options button:hover {
+  background: rgb(43, 51, 85);
+  color: white;
+}
+
+.hide {
+  display: none;
+}
+
+/* for selecting the wrong/correct answer */
+
+.btn.correct {
+  background: rgb(42, 104, 42);
+  color: white;
+}
+
+.btn.wrong {
+  background: rgb(105, 36, 36);
   color: white;
 }

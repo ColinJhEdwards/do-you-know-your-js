@@ -8,6 +8,11 @@
       href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
@@ -15,11 +20,11 @@
     <section class="main">
       <h1>Coding Quiz Challenge</h1>
       <p>
-        The following quiz will consist of 15, multible choice questions, all
+        The following quiz will consist of 15 multible choice questions, all
         related to the fundementals of HTML, CSS, and Javascript. You will have
         10 minutes to comeplete the quiz. <br />Goodluck!
       </p>
-      <button id="beginBtn">Begin</button>
+      <button id="beginBtn" class="btn">Begin</button>
     </section>
     <div class="highscore">
       <h1>Highscores:</h1>
@@ -31,15 +36,16 @@
     </div>
     <section class="quiz-section">
       <div class="question-block">
-        <h2 class="question-message">1. This is where the question will go</h2>
-        <ul class="question-options">
-          <li>A</li>
-          <li>B</li>
-          <li>C</li>
-          <li>D</li>
-        </ul>
-        <button>Next Question</button>
+        <h2 class="question-message">This is where the question will go</h2>
+        <div class="question-options">
+          <button>A</button>
+          <button>A</button>
+          <button>A</button>
+          <button>A</button>
+        </div>
+        <button id="next-btn" class="btn">Next Question</button>
       </div>
     </section>
+    <script src="app.js"></script>
   </body>
 </html>
