@@ -6,7 +6,7 @@
 
 html {
   font-size: 62.5%;
-  font-family: "Schoolbell", cursive;
+  font-family: "Roboto", sans-serif;
 }
 
 /* Main Section */
@@ -24,6 +24,7 @@ html {
 
 .main h1 {
   font-size: 5rem;
+  text-shadow: 2px 2px black;
 }
 
 .main p {
@@ -31,15 +32,16 @@ html {
   width: 50%;
   text-align: center;
   padding-top: 5rem;
+  text-shadow: 2px 2px black;
 }
 
 #beginBtn {
-  font-family: "Schoolbell", cursive;
+  font-family: "Roboto", sans-serif;
   margin-top: 5rem;
 }
 
 #beginBtn:hover {
-  background: green;
+  background: rgb(43, 51, 85);
   color: white;
 }
 
@@ -133,11 +135,21 @@ html {
 /* for selecting the wrong/correct answer */
 
 .btn.correct {
-  background: rgb(42, 104, 42);
+  background: rgb(47, 194, 47);
   color: white;
 }
 
 .btn.wrong {
-  background: rgb(105, 36, 36);
+  background: rgb(197, 43, 43);
+  color: white;
+}
+
+.btn.correct:hover {
+  background: rgb(26, 121, 26);
+  color: white;
+}
+
+.btn.wrong:hover {
+  background: rgb(141, 26, 26);
   color: white;
 }
