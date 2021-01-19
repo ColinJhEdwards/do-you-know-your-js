@@ -45,28 +45,6 @@ html {
   color: white;
 }
 
-.highscore {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-right: 2rem;
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 2rem;
-}
-
-.highscore ul {
-  list-style-type: none;
-}
-
-.highscore li {
-  margin: 1rem;
-}
-
 /* Quiz section */
 
 .quiz-section {
@@ -160,6 +138,71 @@ html {
 }
 
 #homeBtn:hover {
+  background: rgb(43, 51, 85);
+  color: white;
+}
+
+/* finish section */
+
+.finish {
+  min-height: 100vh;
+  background: rgb(43, 51, 85);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  visibility: hidden;
+}
+
+.finish-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 2 1 40rem;
+}
+
+.finish-block h1 {
+  margin: 3rem;
+  font-size: 4rem;
+}
+
+.initial-box {
+  padding: 5rem;
+  margin: 2rem;
+  font-family: "Roboto", sans-serif;
+  font-size: 2rem;
+}
+
+#submitScoreBtn:hover {
+  background: rgb(43, 51, 85);
+  color: white;
+}
+
+.highscore {
+  margin-right: 2rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 2rem;
+  flex: 1 1 40rem;
+}
+
+.highscore ul {
+  list-style-type: none;
+}
+
+.highscore li {
+  margin: 1rem;
+}
+
+#homeBtnTwo:hover {
   background: rgb(43, 51, 85);
   color: white;
 }

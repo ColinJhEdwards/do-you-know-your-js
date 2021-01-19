@@ -30,14 +30,7 @@
 
       <button id="beginBtn" class="btn">Begin</button>
     </section>
-    <div class="highscore">
-      <h1>Highscores:</h1>
-      <ul>
-        <li>Colin: 2000</li>
-        <li>Zack: 2000</li>
-        <li>Austin: 2000</li>
-      </ul>
-    </div>
+
     <section class="quiz-section">
       <div class="question-block">
         <h2 class="question-message">This is where the question will go</h2>
@@ -55,8 +48,25 @@
     </section>
     <section class="timeUp-section">
       <h1>You did not finish the quiz in time!</h1>
-      <h1>Would you like to try again?</h1>
+      <h1>Return home to try again.</h1>
       <button class="btn" id="homeBtn">Home</button>
+    </section>
+    <section class="finish">
+      <div class="finish-block">
+        <h1>You finished the quiz!</h1>
+        <h1>Type your initials in the box bellow to submit your score!</h1>
+        <input type="text" class="initial-box" />
+        <button type="submit" class="btn" id="submitScoreBtn">Submit</button>
+      </div>
+      <div class="highscore">
+        <h1>Highscores:</h1>
+        <ul>
+          <li>Colin: 2000</li>
+          <li>Zack: 2000</li>
+          <li>Austin: 2000</li>
+        </ul>
+        <button class="btn" id="homeBtnTwo">Home</button>
+      </div>
     </section>
     <script src="app.js"></script>
   </body>

@@ -147,7 +147,9 @@ let currentQuestionIndex;
 const questionElement = document.querySelector(".question-message");
 const answerButtonElement = document.querySelector(".question-options");
 const homeBtn = document.querySelector("#homeBtn");
+const homeBtn2 = document.querySelector("#homeBtnTwo");
 const timeUpSection = document.querySelector(".timeUp-section");
+const finishSection = document.querySelector(".finish");
 let score = 0;
 
 //Event Listeners
@@ -158,11 +160,13 @@ nextBtn.addEventListener("click", () => {
   setNextQuestion();
 });
 homeBtn.addEventListener("click", returnHome);
+homeBtn2.addEventListener("click", returnHome);
 
 //Functions
 
 function returnHome() {
   timeUpSection.style.visibility = "hidden";
+  finishSection.style.visibility = "hidden";
 }
 
 function startQuiz() {
@@ -174,6 +178,8 @@ function startQuiz() {
 }
 
 function setNextQuestion() {
+  console.log(score);
+
   resetState();
   showQuestion(questions[currentQuestionIndex]);
 }
@@ -204,15 +210,21 @@ function resetState() {
 
 function selectAnswer(e) {
   const selectedButton = e.target;
+
   const correct = selectedButton.dataset.correct;
+  console.log(selectedButton);
 
   Array.from(answerButtonElement.children).forEach((button) => {
     setStatusClass(button, button.dataset.correct);
   });
+  if (selectedButton.dataset.correct) {
+    score++;
+  }
   if (questions.length > currentQuestionIndex + 1) {
     nextBtn.classList.remove("hide");
   } else {
     quizSection.style.visibility = "hidden";
+    finishSection.style.visibility = "visible";
   }
 }
 
@@ -235,7 +247,7 @@ function clearStatusClass(element) {
 const timerEl = document.querySelector("#timer");
 
 function setTime() {
-  let secondsLeft = 10;
+  let secondsLeft = 900;
   // Sets interval in variable
   var timerInterval = setInterval(function () {
     let mins = Math.floor(secondsLeft / 60);
@@ -254,7 +266,3 @@ function setTime() {
     }
   }, 1000);
 }
-
-console.log(timerEl);
-
-console.log(score);
