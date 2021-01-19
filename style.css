@@ -171,8 +171,9 @@ html {
 }
 
 .initial-box {
-  padding: 5rem;
-  margin: 2rem;
+  padding: 3rem;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
   font-family: "Roboto", sans-serif;
   font-size: 2rem;
 }

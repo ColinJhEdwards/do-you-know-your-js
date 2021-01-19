@@ -54,13 +54,16 @@
     <section class="finish">
       <div class="finish-block">
         <h1>You finished the quiz!</h1>
+        <h1 id="scoreDisplay"></h1>
         <h1>Type your initials in the box bellow to submit your score!</h1>
-        <input type="text" class="initial-box" />
-        <button type="submit" class="btn" id="submitScoreBtn">Submit</button>
+        <form>
+          <input type="text" class="initial-box" id="initials" />
+          <input type="submit" class="btn" id="submitScoreBtn"></input>
+        </form>
       </div>
       <div class="highscore">
         <h1>Highscores:</h1>
-        <ul>
+        <ul class="highScoreList">
           <li>Colin: 2000</li>
           <li>Zack: 2000</li>
           <li>Austin: 2000</li>

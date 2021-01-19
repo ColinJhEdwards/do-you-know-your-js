@@ -150,9 +150,14 @@ const homeBtn = document.querySelector("#homeBtn");
 const homeBtn2 = document.querySelector("#homeBtnTwo");
 const timeUpSection = document.querySelector(".timeUp-section");
 const finishSection = document.querySelector(".finish");
+const scoreDisplay = document.querySelector("#scoreDisplay");
+const submitScoreBtn = document.querySelector("#submitScoreBtn");
+const userInitials = document.querySelector("#initials").value;
+const highScoreList = document.querySelector(".highScoreList");
 let score = 0;
 
 //Event Listeners
+console.log(userInitials);
 
 beginBtn.addEventListener("click", startQuiz);
 nextBtn.addEventListener("click", () => {
@@ -161,6 +166,7 @@ nextBtn.addEventListener("click", () => {
 });
 homeBtn.addEventListener("click", returnHome);
 homeBtn2.addEventListener("click", returnHome);
+submitScoreBtn.addEventListener("click", setHighscore);
 
 //Functions
 
@@ -210,14 +216,13 @@ function resetState() {
 
 function selectAnswer(e) {
   const selectedButton = e.target;
-
   const correct = selectedButton.dataset.correct;
   console.log(selectedButton);
 
   Array.from(answerButtonElement.children).forEach((button) => {
     setStatusClass(button, button.dataset.correct);
   });
-  if (selectedButton.dataset.correct) {
+  if (correct) {
     score++;
   }
   if (questions.length > currentQuestionIndex + 1) {
@@ -225,6 +230,7 @@ function selectAnswer(e) {
   } else {
     quizSection.style.visibility = "hidden";
     finishSection.style.visibility = "visible";
+    scoreDisplay.innerText = "You got " + score + "/15 questions correct!";
   }
 }
 
@@ -242,6 +248,12 @@ function clearStatusClass(element) {
   element.classList.remove("wrong");
 }
 
+function setHighscore(e) {
+  e.preventDefault();
+  const player = document.createElement("li");
+  player.innerText = userInitials + ": " + score;
+  highScoreList.appendChild(player);
+}
 // Timer stuff
 
 const timerEl = document.querySelector("#timer");
