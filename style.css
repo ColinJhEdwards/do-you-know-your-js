@@ -138,8 +138,30 @@ html {
   padding-top: 5rem;
 }
 
-.hide {
-  display: none;
+/* Time up section */
+
+.timeUp-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(167, 54, 54);
+  color: white;
+  font-size: 5rem;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  visibility: hidden;
+}
+
+.timeUp-section h1 {
+  margin: 5rem;
+}
+
+#homeBtn:hover {
+  background: rgb(43, 51, 85);
+  color: white;
 }
 
 /* for selecting the wrong/correct answer */
@@ -162,4 +184,8 @@ html {
 .btn.wrong:hover {
   background: rgb(141, 26, 26);
   color: white;
+}
+
+.hide {
+  display: none;
 }

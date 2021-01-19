@@ -146,6 +146,8 @@ const quizSection = document.querySelector(".quiz-section");
 let currentQuestionIndex;
 const questionElement = document.querySelector(".question-message");
 const answerButtonElement = document.querySelector(".question-options");
+const homeBtn = document.querySelector("#homeBtn");
+const timeUpSection = document.querySelector(".timeUp-section");
 let score = 0;
 
 //Event Listeners
@@ -155,8 +157,13 @@ nextBtn.addEventListener("click", () => {
   currentQuestionIndex++;
   setNextQuestion();
 });
+homeBtn.addEventListener("click", returnHome);
 
 //Functions
+
+function returnHome() {
+  timeUpSection.style.visibility = "hidden";
+}
 
 function startQuiz() {
   // display quiz section when begin button is pressed
@@ -225,11 +232,10 @@ function clearStatusClass(element) {
 
 // Timer stuff
 
-let secondsLeft = 900;
-
 const timerEl = document.querySelector("#timer");
 
 function setTime() {
+  let secondsLeft = 10;
   // Sets interval in variable
   var timerInterval = setInterval(function () {
     let mins = Math.floor(secondsLeft / 60);
@@ -239,12 +245,16 @@ function setTime() {
     secondsLeft--;
     timerEl.textContent = output;
 
-    if (secondsLeft === 0) {
+    if (secondsLeft === -1) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       // Display time up page
+      quizSection.style.visibility = "hidden";
+      timeUpSection.style.visibility = "visible";
     }
   }, 1000);
 }
+
+console.log(timerEl);
 
 console.log(score);
