@@ -138,7 +138,7 @@ const questions = [
   },
 ];
 
-//Selectors
+//Selectors and global variables
 
 const beginBtn = document.querySelector("#beginBtn");
 const nextBtn = document.querySelector("#next-btn");
@@ -146,6 +146,7 @@ const quizSection = document.querySelector(".quiz-section");
 let currentQuestionIndex;
 const questionElement = document.querySelector(".question-message");
 const answerButtonElement = document.querySelector(".question-options");
+let score = 0;
 
 //Event Listeners
 
@@ -158,7 +159,9 @@ nextBtn.addEventListener("click", () => {
 //Functions
 
 function startQuiz() {
+  // display quiz section when begin button is pressed
   quizSection.style.visibility = "visible";
+  setTime();
   currentQuestionIndex = 0;
   setNextQuestion();
 }
@@ -169,7 +172,9 @@ function setNextQuestion() {
 }
 
 function showQuestion(question) {
+  // display question
   questionElement.innerText = question.question;
+  // for each choice create a button and insert text
   question.choices.forEach((choice) => {
     const button = document.createElement("button");
     button.innerText = choice.text;
@@ -181,6 +186,8 @@ function showQuestion(question) {
     answerButtonElement.appendChild(button);
   });
 }
+
+// reset buttons so they do not stack when going to next question
 function resetState() {
   nextBtn.classList.add("hide");
   while (answerButtonElement.firstChild) {
@@ -191,11 +198,15 @@ function resetState() {
 function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct;
-  setStatusClass(document.body, correct);
+
   Array.from(answerButtonElement.children).forEach((button) => {
     setStatusClass(button, button.dataset.correct);
   });
-  nextBtn.classList.remove("hide");
+  if (questions.length > currentQuestionIndex + 1) {
+    nextBtn.classList.remove("hide");
+  } else {
+    quizSection.style.visibility = "hidden";
+  }
 }
 
 function setStatusClass(element, correct) {
@@ -211,3 +222,29 @@ function clearStatusClass(element) {
   element.classList.remove("correct");
   element.classList.remove("wrong");
 }
+
+// Timer stuff
+
+let secondsLeft = 900;
+
+const timerEl = document.querySelector("#timer");
+
+function setTime() {
+  // Sets interval in variable
+  var timerInterval = setInterval(function () {
+    let mins = Math.floor(secondsLeft / 60);
+    let secs = Math.floor(secondsLeft % 60);
+    let output =
+      mins.toString().padStart(2, "0") + ":" + secs.toString().padStart(2, "0");
+    secondsLeft--;
+    timerEl.textContent = output;
+
+    if (secondsLeft === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+      // Display time up page
+    }
+  }, 1000);
+}
+
+console.log(score);
