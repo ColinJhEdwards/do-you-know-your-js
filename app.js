@@ -152,12 +152,11 @@ const timeUpSection = document.querySelector(".timeUp-section");
 const finishSection = document.querySelector(".finish");
 const scoreDisplay = document.querySelector("#scoreDisplay");
 const submitScoreBtn = document.querySelector("#submitScoreBtn");
-const userInitials = document.querySelector("#initials").value;
+
 const highScoreList = document.querySelector(".highScoreList");
 let score = 0;
 
 //Event Listeners
-console.log(userInitials);
 
 beginBtn.addEventListener("click", startQuiz);
 nextBtn.addEventListener("click", () => {
@@ -217,8 +216,6 @@ function resetState() {
 function selectAnswer(e) {
   const selectedButton = e.target;
   const correct = selectedButton.dataset.correct;
-  console.log(selectedButton);
-
   Array.from(answerButtonElement.children).forEach((button) => {
     setStatusClass(button, button.dataset.correct);
   });
@@ -231,6 +228,15 @@ function selectAnswer(e) {
     quizSection.style.visibility = "hidden";
     finishSection.style.visibility = "visible";
     scoreDisplay.innerText = "You got " + score + "/15 questions correct!";
+    const highscore = JSON.parse(localStorage.getItem("highscores")) || [];
+    highscore.sort(function (a, b) {
+      return b.userScore - a.userScore;
+    });
+    for (let i = 0; i < 5; i++) {
+      const player = document.createElement("li");
+      player.innerText = `${highscore[i].user} : ${highscore[i].userScore}`;
+      highScoreList.appendChild(player);
+    }
   }
 }
 
@@ -250,16 +256,24 @@ function clearStatusClass(element) {
 
 function setHighscore(e) {
   e.preventDefault();
-  const player = document.createElement("li");
-  player.innerText = userInitials + ": " + score;
-  highScoreList.appendChild(player);
+  const userInitials = document.getElementById("initials").value;
+  console.log(userInitials);
+
+  newScore(userInitials, score);
+}
+
+function newScore(userInitials, score) {
+  const newScore = { user: userInitials, userScore: score };
+  const highscore = JSON.parse(localStorage.getItem("highscores")) || [];
+  highscore.push(newScore);
+  window.localStorage.setItem("highscores", JSON.stringify(highscore));
 }
 // Timer stuff
 
 const timerEl = document.querySelector("#timer");
 
 function setTime() {
-  let secondsLeft = 900;
+  let secondsLeft = 300;
   // Sets interval in variable
   var timerInterval = setInterval(function () {
     let mins = Math.floor(secondsLeft / 60);
