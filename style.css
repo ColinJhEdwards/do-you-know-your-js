@@ -193,6 +193,8 @@ html {
   color: white;
   font-size: 2rem;
   flex: 1 1 40rem;
+  position: absolute;
+  top: 0;
 }
 
 .highscore ul {

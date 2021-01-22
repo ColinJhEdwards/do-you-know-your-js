@@ -9,7 +9,7 @@ const questions = [
     ],
   },
   {
-    question: "2. Inside which HTML element do you put the JavaScript?",
+    question: "2. Inside which HTML element do you put the JavaScript code?",
     choices: [
       { text: "<javascript>", correct: false },
       { text: "<link>", correct: false },
@@ -152,6 +152,7 @@ const timeUpSection = document.querySelector(".timeUp-section");
 const finishSection = document.querySelector(".finish");
 const scoreDisplay = document.querySelector("#scoreDisplay");
 const submitScoreBtn = document.querySelector("#submitScoreBtn");
+const confirmDisplay = document.querySelector("#commitConfirm");
 
 const highScoreList = document.querySelector(".highScoreList");
 let score = 0;
@@ -172,6 +173,7 @@ submitScoreBtn.addEventListener("click", setHighscore);
 function returnHome() {
   timeUpSection.style.visibility = "hidden";
   finishSection.style.visibility = "hidden";
+  confirmDisplay.innerText = "";
 }
 
 function startQuiz() {
@@ -228,15 +230,19 @@ function selectAnswer(e) {
     quizSection.style.visibility = "hidden";
     finishSection.style.visibility = "visible";
     scoreDisplay.innerText = "You got " + score + "/15 questions correct!";
-    const highscore = JSON.parse(localStorage.getItem("highscores")) || [];
-    highscore.sort(function (a, b) {
-      return b.userScore - a.userScore;
-    });
-    for (let i = 0; i < 5; i++) {
-      const player = document.createElement("li");
-      player.innerText = `${highscore[i].user} : ${highscore[i].userScore}`;
-      highScoreList.appendChild(player);
-    }
+    updateHighscores();
+  }
+}
+
+function updateHighscores() {
+  const highscore = JSON.parse(localStorage.getItem("highscores")) || [];
+  highscore.sort(function (a, b) {
+    return b.userScore - a.userScore;
+  });
+  for (let i = 0; i < 5; i++) {
+    const player = document.createElement("li");
+    player.innerText = `${highscore[i].user} : ${highscore[i].userScore}`;
+    highScoreList.appendChild(player);
   }
 }
 
@@ -257,9 +263,11 @@ function clearStatusClass(element) {
 function setHighscore(e) {
   e.preventDefault();
   const userInitials = document.getElementById("initials").value;
-  console.log(userInitials);
+
+  confirmDisplay.innerText = "Score Submitted!";
 
   newScore(userInitials, score);
+  updateHighscores();
 }
 
 function newScore(userInitials, score) {
@@ -267,6 +275,14 @@ function newScore(userInitials, score) {
   const highscore = JSON.parse(localStorage.getItem("highscores")) || [];
   highscore.push(newScore);
   window.localStorage.setItem("highscores", JSON.stringify(highscore));
+  highscore.sort(function (a, b) {
+    return b.userScore - a.userScore;
+  });
+  for (let i = 0; i < 5; i++) {
+    const player = document.createElement("li");
+    player.innerText = `${highscore[i].user} : ${highscore[i].userScore}`;
+    highScoreList.appendChild(player);
+  }
 }
 // Timer stuff
 
@@ -292,3 +308,5 @@ function setTime() {
     }
   }, 1000);
 }
+
+updateHighscores();
